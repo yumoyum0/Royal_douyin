@@ -1,6 +1,5 @@
 package com.bytedance.royal_douyin.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.bytedance.royal_douyin.util.JsonUtil;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
