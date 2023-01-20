@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: @build.profile.id@
+server:
+  port: 8080
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
