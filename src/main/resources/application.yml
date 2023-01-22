@@ -5,3 +5,7 @@ server:
   port: 8080
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
+
+jwt:
+  secret: "FYVONLY05G545JKLIXAQVROLW"
+  expiration: 864000000

@@ -9,7 +9,13 @@ public enum ErrorEnum {
     SESSION_ERROR(5003,"会话不存在"),
     TOKEN_ERROR(5003,"token错误"),
     SESSION_TIMEOUT(5004,"会话过期"),
-    NULL_POINTEREXCEPTION_ERROR(5005,"空指针异常");
+    NULL_POINTEREXCEPTION_ERROR(5005,"空指针异常"),
+
+    PASSWORD_ERROR(5006,"密码错误"),
+
+    USERNAME_NOTFOUND_ERROR(5007,"用户名不存在"),
+
+    USERNAME_EXIT_ERROR(5008,"用户名已存在");
 
 
 

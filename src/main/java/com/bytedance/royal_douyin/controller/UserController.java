@@ -4,6 +4,7 @@ import com.bytedance.royal_douyin.entity.User;
 import com.bytedance.royal_douyin.model.user.UserLoginModel;
 import com.bytedance.royal_douyin.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,7 @@ public class UserController {
     /**
      * 注册
      */
-    @GetMapping("/register")
+    @PostMapping("/register")
     public UserLoginModel register(String username, String password){
         return userService.register(username,password);
     }
@@ -40,7 +41,7 @@ public class UserController {
     /**
      * 登录
      */
-    @GetMapping("/login")
+    @PostMapping("/login")
     public UserLoginModel login(String username,String password){
         return userService.login(username,password);
     }

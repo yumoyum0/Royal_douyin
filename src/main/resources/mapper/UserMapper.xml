@@ -8,6 +8,11 @@
     <select id="getUserById" resultType="com.bytedance.royal_douyin.entity.User">
         select *
         from user
-        where user_id = #{userId}
+        where id = #{userId}
+    </select>
+    <select id="selectByUserName" resultType="com.bytedance.royal_douyin.entity.User">
+        select *
+        from user
+        where username = #{username}
     </select>
 </mapper>
