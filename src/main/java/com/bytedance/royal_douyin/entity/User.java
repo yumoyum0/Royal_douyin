@@ -30,7 +30,7 @@ public class User {
      */
     @JsonProperty("name")
     @TableField("username")
-    private String name;
+    private String username;
 
     @JsonIgnore
     @TableField("password")
@@ -57,9 +57,9 @@ public class User {
     private Boolean isFollow;
 
 
-    public User(String name, String password) {
+    public User(String username, String password) {
         this.id = 0L;
-        this.name = name;
+        this.username = username;
         this.password = password;
     }
 }

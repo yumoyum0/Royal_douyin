@@ -25,7 +25,7 @@ public class UserController {
     /**
      * 获取登录用户的信息
      */
-    @GetMapping("/")
+    @GetMapping("")
     public User getUserInfo(Long userId,String token){
         return userService.getUserInfoById(userId,token);
     }

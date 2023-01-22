@@ -40,7 +40,7 @@ public class JwtUtil {
      * 根据用户信息生成token
      */
     public String generateToken(User user) {
-        return generateToken(user.getName());
+        return generateToken(user.getUsername());
     }
 
     public String generateToken(String username) {
@@ -94,7 +94,7 @@ public class JwtUtil {
      */
     public boolean validateToken(String token, User user) {
         String username = getUserNameFromToken(token);
-        return username.equals(user.getName()) && !isTokenExpired(token);
+        return username.equals(user.getUsername()) && !isTokenExpired(token);
     }
 
     /**
