@@ -9,6 +9,7 @@ import com.bytedance.royal_douyin.model.user.UserLoginModel;
 import com.bytedance.royal_douyin.service.RedisService;
 import com.bytedance.royal_douyin.service.UserService;
 import com.bytedance.royal_douyin.util.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -19,19 +20,30 @@ import javax.annotation.Resource;
  * @DateTime: 2023/1/20 17:28
  **/
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
 
+    public final String USER_ID_PREFIX = "userId:";
     @Resource
     private JwtUtil jwtUtil;
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private RedisService redisService;
+
     @Override
     public User getUserInfoById(Long userId,String token) {
-        // TODO
-        User user = userMapper.getUserById(userId);
-        if (user == null){
-            throw new LocalRuntimeException("找不到该用户");
+        String redisKey = USER_ID_PREFIX+userId;
+        User user;
+        if (redisService.hasKey(redisKey)){
+            user=(User) redisService.get(redisKey);
+        }else {
+            user = userMapper.getUserById(userId);
+            if (user == null){
+                throw new LocalRuntimeException("找不到该用户");
+            }
+            redisService.set(redisKey,user);
         }
         return user;
     }
