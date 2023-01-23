@@ -5,12 +5,12 @@
 <mapper namespace="com.bytedance.royal_douyin.mapper.UserMapper">
 
 
-    <select id="getUserById" resultType="com.bytedance.royal_douyin.entity.User">
+    <select id="getUserById" resultType="com.bytedance.royal_douyin.dataobject.UserDo">
         select *
         from user
         where id = #{userId}
     </select>
-    <select id="selectByUserName" resultType="com.bytedance.royal_douyin.entity.User">
+    <select id="selectByUserName" resultType="com.bytedance.royal_douyin.dataobject.UserDo">
         select *
         from user
         where username = #{username}
