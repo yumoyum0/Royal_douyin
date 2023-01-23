@@ -9,7 +9,7 @@ import com.bytedance.royal_douyin.model.user.UserLoginModel;
  * @DateTime: 2023/1/20 17:27
  **/
 public interface UserService {
-    User getUserInfoById(Long userId,String token);
+    User getUserInfoById(Long userId);
     UserLoginModel login(String username, String password);
     UserLoginModel register(String username, String password);
 }

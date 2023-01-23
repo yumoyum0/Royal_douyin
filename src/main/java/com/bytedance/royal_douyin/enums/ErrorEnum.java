@@ -5,17 +5,17 @@ public enum ErrorEnum {
     INTERNAL_ERROR(5000,"内部错误，请联系管理员修复"),
 
     UNKNOWN_ERROR(5001, "其他错误，请联系管理员排查"),
+    TOKEN_ERROR(5002,"token错误"),
+    TOKEN_TIMEOUT(5003,"token过期"),
+    NULL_POINTEREXCEPTION_ERROR(5004,"空指针异常"),
 
-    SESSION_ERROR(5003,"会话不存在"),
-    TOKEN_ERROR(5003,"token错误"),
-    SESSION_TIMEOUT(5004,"会话过期"),
-    NULL_POINTEREXCEPTION_ERROR(5005,"空指针异常"),
+    PASSWORD_ERROR(5005,"密码错误"),
 
-    PASSWORD_ERROR(5006,"密码错误"),
+    USERNAME_NOTFOUND_ERROR(5006,"用户名不存在"),
 
-    USERNAME_NOTFOUND_ERROR(5007,"用户名不存在"),
+    USERNAME_EXIT_ERROR(5007,"用户名已存在"),
 
-    USERNAME_EXIT_ERROR(5008,"用户名已存在");
+    NOT_LOGIN_ERROR(5008,"用户未登录");
 
 
 

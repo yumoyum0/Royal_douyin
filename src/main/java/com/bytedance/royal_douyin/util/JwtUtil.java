@@ -27,7 +27,7 @@ import java.util.Map;
 @Component
 public class JwtUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(JwtUtil.class);
-    private static final String CLAIM_KEY_USERNAME = "sub";
+    private static final String CLAIM_KEY_USERNAME = "user";
     private static final String CLAIM_KEY_CREATED = "created";
     @Value("${jwt.secret}")
     private String secret;
@@ -40,7 +40,7 @@ public class JwtUtil {
      * 根据用户信息生成token
      */
     public String generateToken(User user) {
-        return generateToken(user.getUsername());
+        return generateToken(user.getName());
     }
 
     public String generateToken(String username) {
@@ -54,7 +54,7 @@ public class JwtUtil {
     /**
      * 从token中获取JWT中的负载
      */
-    private Map<String, Claim> getClaimsFromToken(String token) {
+    public Map<String, Claim> getClaimsFromToken(String token) {
         try {
             JWTVerifier verifier = JWT.require(Algorithm.HMAC256(secret)).build();
             DecodedJWT decodedJWT = verifier.verify(token);
@@ -69,7 +69,7 @@ public class JwtUtil {
     /**
      * 生成token的过期时间
      */
-    private Date generateExpirationDate() {
+    public Date generateExpirationDate() {
         return new Date(System.currentTimeMillis() + expiration * 1000);
     }
 
@@ -94,13 +94,13 @@ public class JwtUtil {
      */
     public boolean validateToken(String token, User user) {
         String username = getUserNameFromToken(token);
-        return username.equals(user.getUsername()) && !isTokenExpired(token);
+        return username.equals(user.getName()) && !isTokenExpired(token);
     }
 
     /**
      * 判断token是否已经失效
      */
-    private boolean isTokenExpired(String token) {
+    public boolean isTokenExpired(String token) {
         Date expiredDate = getExpiredDateFromToken(token);
         return expiredDate.before(new Date());
     }
